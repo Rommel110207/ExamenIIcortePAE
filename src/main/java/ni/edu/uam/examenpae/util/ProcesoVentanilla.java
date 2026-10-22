@@ -1,5 +1,6 @@
 package ni.edu.uam.examenpae.util;
 
+ feature/kenneth
 public class ProcesoVentanilla implements Runnable {
     private final String nombre;
     private final int cantidadOperaciones;
@@ -32,10 +33,19 @@ public class ProcesoVentanilla implements Runnable {
 
     public String getEstado() {
         return estado;
+
+public class ProcesoVentanilla implements Runnable
+{
+    private final String nombre;
+
+    public ProcesoVentanilla(String nombre) {
+        this.nombre = nombre;
+ main
     }
 
     @Override
     public void run() {
+ feature/kenneth
         int completadas = 0;
         if (activo && !Thread.currentThread().isInterrupted()) {
             estado = "Ejecutando";
@@ -53,9 +63,17 @@ public class ProcesoVentanilla implements Runnable {
                 break;
             }
 
+        for (int i = 1; i <= 5; i++) {
+            if (Thread.currentThread().isInterrupted()) return;
+
+            System.out.println(Thread.currentThread().getName()
+                    + " | " + nombre + " procesa " + i);
+main
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
+ feature/kenneth
                 // Se recupera la señal y se sale: nunca se ignora la interrupción.
                 Thread.currentThread().interrupt();
                 break;
@@ -65,5 +83,11 @@ public class ProcesoVentanilla implements Runnable {
         // Si hizo todas las operaciones finalizó; de lo contrario fue detenido.
         estado = completadas == cantidadOperaciones ? "Finalizado" : "Detenido";
         System.out.println(Thread.currentThread().getName() + " | " + estado);
+
+                Thread.currentThread().interrupt();
+                return;
+            }
+        }
+ main
     }
 }
